@@ -4,6 +4,7 @@ import {
 	View,
 	AppRegistry,
 	Dimensions,
+	TextInput,
 	Image
 } from 'react-native';
 import StyleSheet from 'StyleSheet';
@@ -29,7 +30,7 @@ export default class IndexComponent extends React.Component{
 			<View style={styles.container}>
 				<Image source={IndexBanner} style={styles.indexBanner}/>
 				<View style={styles.main}>
-					<View>
+					<View style={styles.startPlace}>
 						<Text>出发地</Text>
 					</View>
 				</View>
@@ -58,7 +59,12 @@ let styles = StyleSheet.create({
 		borderRadius:4
 	},
 	startPlace:{
-		paddingLeft:20,
-		paddingRight:20
+		marginLeft:20,
+		marginRight:20,
+		borderBottomWidth:1
+	},
+	startPlaceInput:{
+		height:40,
+		borderWidth:1
 	}
 });
