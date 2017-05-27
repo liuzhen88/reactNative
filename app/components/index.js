@@ -11,9 +11,10 @@ import {
 } from 'react-native';
 import StyleSheet from 'StyleSheet';
 import resolveAssetSource from 'resolveAssetSource';
+import { connect } from 'react-redux';
+
 import StartPlace from './start_place';
 import EndPlace from './end_place';
-
 import IndexBanner from '../images/index_banner.png';
 import locationIcon from '../images/location.png';
 import closeIcon from '../images/guanbi.png';
@@ -25,7 +26,7 @@ let windowWidth = Dimensions.get('window').width;
 let h = (windowWidth*indexBannerHeight)/indexBannerWidth;
 
 
-export default class IndexComponent extends React.Component{
+class IndexComponent extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -81,6 +82,7 @@ export default class IndexComponent extends React.Component{
 						</View>
 					</TouchableNativeFeedback>
 				</View>
+				<Text>{this.props.test}</Text>
 			</View>
 		)
 	}
@@ -131,3 +133,13 @@ let styles = StyleSheet.create({
 		height:15
 	}
 });
+
+const mapStateToProps = (state) => {
+	return {
+		test:state.test
+	}
+}
+
+IndexComponent = connect(mapStateToProps)(IndexComponent);
+
+export default IndexComponent;
