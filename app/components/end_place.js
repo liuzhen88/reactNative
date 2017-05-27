@@ -5,17 +5,15 @@ import {
 } from 'react-native';
 import Title from './title';
 
-class StartPlace extends React.Component {
+export default class EndPlace extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	render(){
 		return (
 			<View>
-				<Title titleName='出发地选择' navigator={this.props.navigator}/>
+				<Title titleName='目的地选择' navigator={this.props.navigator}/>
 			</View>
 		)
 	}
 }
-
-export default StartPlace;

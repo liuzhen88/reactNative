@@ -12,6 +12,7 @@ import {
 import StyleSheet from 'StyleSheet';
 import resolveAssetSource from 'resolveAssetSource';
 import StartPlace from './start_place';
+import EndPlace from './end_place';
 
 import IndexBanner from '../images/index_banner.png';
 import locationIcon from '../images/location.png';
@@ -41,6 +42,13 @@ export default class IndexComponent extends React.Component{
 		}
 		navigator.push(scenes);
 	}
+	selectEndPlace(){
+		const { navigator } = this.props;
+		let scenes = {
+			component:EndPlace
+		}
+		navigator.push(scenes);
+	}
 	render(){
 		return (
 			<View style={styles.container}>
@@ -59,17 +67,19 @@ export default class IndexComponent extends React.Component{
 							</View>
 						</View>
 					</TouchableNativeFeedback>
-					<View style={styles.startPlace}>
-						<Text style={styles.startPlaceName}>目的地</Text>
-						<TextInput value='盐城' 
-							style={styles.startPlaceInput} 
-							editable={false} 
-							underlineColorAndroid = 'transparent'
-						/>
-						<View style={styles.location}>
-							<Image source={closeIcon} style={styles.locationImage}/>
+					<TouchableNativeFeedback onPress={this.selectEndPlace.bind(this)}>
+						<View style={styles.startPlace}>
+							<Text style={styles.startPlaceName}>目的地</Text>
+							<TextInput value='盐城' 
+								style={styles.startPlaceInput} 
+								editable={false} 
+								underlineColorAndroid = 'transparent'
+							/>
+							<View style={styles.location}>
+								<Image source={closeIcon} style={styles.locationImage}/>
+							</View>
 						</View>
-					</View>
+					</TouchableNativeFeedback>
 				</View>
 			</View>
 		)

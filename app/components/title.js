@@ -2,7 +2,8 @@ import React from 'react';
 import {
 	View,
 	Text,
-	Image
+	Image,
+	TouchableNativeFeedback
 } from 'react-native';
 import StyleSheet from 'StyleSheet';
 import BackIcon from '../images/back.png';
@@ -11,12 +12,18 @@ export default class Title extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+	goBack(){
+		const { navigator } = this.props;
+		navigator.pop();
+	}
 	render(){
 		return (
 			<View style={styles.title}>
-				<View>
-					<Image source={BackIcon} style={styles.back}/>
-				</View>
+				<TouchableNativeFeedback onPress={this.goBack.bind(this)}>
+					<View style={styles.left}>
+						<Image source={BackIcon} style={styles.back}/>
+					</View>
+				</TouchableNativeFeedback>
 				<Text style={styles.text}>{this.props.titleName ? this.props.titleName : ''}</Text>
 			</View>
 		)
@@ -29,11 +36,11 @@ const styles = StyleSheet.create({
 		height:44,
 		backgroundColor:'#0597e7',
 		flexDirection:'row',
-		alignItems:'center'
+		alignItems:'center',
+		justifyContent:'center',
+		position:'relative'
 	},
 	text:{
-		textAlign:'center',
-		lineHeight:30,
 		color:'#fff',
 		fontSize:14
 	},
@@ -41,5 +48,10 @@ const styles = StyleSheet.create({
 		width:20,
 		height:20,
 		marginLeft:10
+	},
+	left:{
+		position:'absolute',
+		left:0,
+		top:10
 	}
 });

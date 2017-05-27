@@ -22,7 +22,7 @@ class Root extends React.Component {
 		return (	 		
 			<TabNavigator>
 				<TabNavigator.Item
-					title='首页'
+					title='棣栭〉'
 					renderIcon = {
 						() => <Image source={footIndex}/>
 					}
@@ -32,7 +32,7 @@ class Root extends React.Component {
 					<IndexComponent navigator={this.props.navigator} testProps='1212121'/>
 				</TabNavigator.Item>
 				<TabNavigator.Item
-					title='订单'
+					title='璁㈠崟'
 					selected={this.state.selectedTab === 'order'}
 					onPress={this.handlePress.bind(this,'order')}
 				>	
@@ -41,7 +41,7 @@ class Root extends React.Component {
 					</View>
 				</TabNavigator.Item>
 				<TabNavigator.Item
-					title='客服'
+					title='瀹㈡湇'
 					selected={this.state.selectedTab === 'customService'}
 					onPress={this.handlePress.bind(this,'customService')}
 				>	
@@ -50,7 +50,7 @@ class Root extends React.Component {
 					</View>
 				</TabNavigator.Item>
 				<TabNavigator.Item
-					title='个人'
+					title='涓汉'
 					selected={this.state.selectedTab === 'personal'}
 					onPress={this.handlePress.bind(this,'personal')}
 				>	
