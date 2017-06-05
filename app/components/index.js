@@ -64,7 +64,19 @@ class IndexComponent extends React.Component{
 			}
 		);
 	}
+	getEndPlaceName(endPlace){
+		let endPlaceName = '';
+		endPlace.map(function(item){
+			if(endPlaceName == ''){
+				endPlaceName = endPlaceName + item.Name;
+			}else{
+				endPlaceName = endPlaceName + ',' + item.Name;
+			}
+		});
+		return endPlaceName;
+	}
 	render(){
+		let data = this.props.data;
 		return (
 			<View style={styles.container}>
 				<Image source={IndexBanner} style={styles.indexBanner}/>
@@ -74,7 +86,7 @@ class IndexComponent extends React.Component{
 						<Text style={styles.startPlaceName}>出发地</Text>
 						<TouchableNativeFeedback onPress={this.selectStartPlace.bind(this)}>
 							<View>
-								<TextInput value='盐城' 
+								<TextInput value={data.startPlace.Name}
 									style={styles.startPlaceInput} 
 									editable={false} 
 									underlineColorAndroid = 'transparent'
@@ -91,7 +103,7 @@ class IndexComponent extends React.Component{
 					<TouchableNativeFeedback onPress={this.selectEndPlace.bind(this)}>
 						<View style={styles.startPlace}>
 							<Text style={styles.startPlaceName}>目的地</Text>
-							<TextInput value='盐城' 
+							<TextInput value={this.getEndPlaceName(data.endPlace)} 
 								style={styles.startPlaceInput} 
 								editable={false} 
 								underlineColorAndroid = 'transparent'
@@ -109,20 +121,20 @@ class IndexComponent extends React.Component{
 										<Text style={styles.travelType}>出发</Text>
 									</View>
 									<View style={styles.startTime}>
-										<Text style={styles.travelTime}>06月06日</Text>
-										<Text style={styles.travelType}>周二</Text>
+										<Text style={styles.travelTime}>{data.time.startMonth}月{data.time.startDay}日</Text>
+										<Text style={styles.travelType}>{data.time.startWeek}</Text>
 									</View>
 								</View>
 								<View style={styles.playDayCount}>
-									<Text style={styles.padding}>共3天</Text>
+									<Text style={styles.padding}>共{data.time.count}天</Text>
 								</View> 
 								<View>
 									<View>
 										<Text style={styles.travelType}>返回</Text>
 									</View>
 									<View style={styles.startTime}>
-										<Text style={styles.travelTime}>06月09日</Text>
-										<Text style={styles.travelType}>周五</Text>
+										<Text style={styles.travelTime}>{data.time.endMonth}月{data.time.endDay}日</Text>
+										<Text style={styles.travelType}>{data.time.endWeek}</Text>
 									</View>
 								</View>
 							</View>
@@ -131,7 +143,7 @@ class IndexComponent extends React.Component{
 					<TouchableNativeFeedback>
 						<View style={styles.startPlace}>
 							<Text style={styles.startPlaceName}>出行人数</Text>
-							<TextInput value='请选择出行人数' 
+							<TextInput value={data.ticket.adultNum + '成人' + data.ticket.childrenNum + '儿童'} 
 								style={styles.startPlaceInput} 
 								editable={false} 
 								underlineColorAndroid = 'transparent'
@@ -203,7 +215,7 @@ let styles = StyleSheet.create({
 		height:18
 	},
 	timeSelectContainer:{
-		padding:15,
+		padding:20,
 		flexDirection:'row',
 		justifyContent:'space-between',
 		borderBottomWidth:1,
@@ -246,8 +258,8 @@ let styles = StyleSheet.create({
 		marginLeft:10,
 		marginRight:10,
 		backgroundColor:'#0596e7',
-		marginTop:5,
-		marginBottom:5,
+		marginTop:10,
+		marginBottom:10,
 		borderRadius:4
 	},
 	nextText:{
@@ -260,7 +272,7 @@ let styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
 	return {
-		test:state.test
+		data:state.customPackage
 	}
 }
 

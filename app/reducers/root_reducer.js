@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import indexReducer from './index_reducer';
 
 const testReducer = (state='', action) => {
 	switch (action.type){
@@ -10,7 +11,8 @@ const testReducer = (state='', action) => {
 }
 
 let rootReducer = combineReducers({
-	test:testReducer
+	test:testReducer,
+	customPackage:indexReducer
 });
 
 export default rootReducer;
