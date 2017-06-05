@@ -3,6 +3,7 @@ import {
 	View,
 	Text
 } from 'react-native';
+import { connect } from 'react-redux';
 import Title from './title';
 
 class StartPlace extends React.Component {
@@ -17,5 +18,13 @@ class StartPlace extends React.Component {
 		)
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		test:state.test
+	}
+}
+
+StartPlace = connect(mapStateToProps)(StartPlace);
 
 export default StartPlace;

@@ -82,7 +82,7 @@ class IndexComponent extends React.Component{
 						</View>
 					</TouchableNativeFeedback>
 				</View>
-				<Text>{this.props.test}</Text>
+				<Text>{this.props.test}</Text> 
 			</View>
 		)
 	}
