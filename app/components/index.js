@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 
 import StartPlace from './start_place';
 import EndPlace from './end_place';
+import SubmitOrder from './submit_order';
 import IndexBanner from '../images/index_banner.png';
 import locationIcon from '../images/location.png';
 import closeIcon from '../images/guanbi.png';
@@ -52,7 +53,11 @@ class IndexComponent extends React.Component{
 		navigator.push(scenes);
 	}
 	handleNextStep(){
-		console.log(this);
+		const { navigator } = this.props;
+		let scenes = {
+			component:SubmitOrder
+		}
+		navigator.push(scenes);
 	}
 	getLocation(){
 		navigator.geolocation.getCurrentPosition(
@@ -153,9 +158,11 @@ class IndexComponent extends React.Component{
 							</View>
 						</View>
 					</TouchableNativeFeedback>
-					<View style={styles.btnContainer} onPress={this.handleNextStep.bind(this)}>
-						<Text style={styles.nextText}>下一步</Text>
-					</View>
+					<TouchableNativeFeedback onPress={this.handleNextStep.bind(this)}>
+						<View style={styles.btnContainer}>
+							<Text style={styles.nextText}>下一步</Text>
+						</View>
+					</TouchableNativeFeedback>
 				</View> 
 			</View>
 		)
