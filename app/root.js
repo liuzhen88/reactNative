@@ -13,6 +13,8 @@ import TabNavigator from 'react-native-tab-navigator';
 
 import footIndex from './images/footer_index.png';
 import IndexComponent from './components/index';
+import PersonCenter from './components/personal';
+import MyOrder from './components/my_order';
 
 class Root extends React.Component {
 	constructor(props) {
@@ -40,9 +42,7 @@ class Root extends React.Component {
 					selected={this.props.selectedTab === 'order'}
 					onPress={this.handlePress.bind(this,'order')}
 				>	
-					<View>
-						<Text>1111111111111111</Text>
-					</View>
+					<MyOrder/>
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='客服'
@@ -58,9 +58,7 @@ class Root extends React.Component {
 					selected={this.props.selectedTab === 'personal'}
 					onPress={this.handlePress.bind(this,'personal')}
 				>	
-					<View>
-						<Text>3333333333</Text>
-					</View>
+					<PersonCenter/>
 				</TabNavigator.Item>
 			</TabNavigator>
 			 

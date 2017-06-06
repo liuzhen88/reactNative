@@ -17,13 +17,19 @@ export default class Title extends React.Component {
 		navigator.pop();
 	}
 	render(){
+		let isHideBack = this.props.isHideBack;
+
+		let backView = <View></View>;
+		if(!isHideBack){
+			backView = 	<TouchableNativeFeedback onPress={this.goBack.bind(this)}>
+							<View style={styles.left}>
+								<Image source={BackIcon} style={styles.back}/>
+							</View>
+						</TouchableNativeFeedback>
+		}
 		return (
 			<View style={styles.title}>
-				<TouchableNativeFeedback onPress={this.goBack.bind(this)}>
-					<View style={styles.left}>
-						<Image source={BackIcon} style={styles.back}/>
-					</View>
-				</TouchableNativeFeedback>
+				{backView}
 				<Text style={styles.text}>{this.props.titleName ? this.props.titleName : ''}</Text>
 			</View>
 		)

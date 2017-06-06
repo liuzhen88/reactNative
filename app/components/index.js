@@ -17,7 +17,6 @@ import actions from '../actions/root_action';
 import StartPlace from './start_place';
 import EndPlace from './end_place';
 import SubmitOrder from './submit_order';
-import MyOrder from './my_order';
 import IndexBanner from '../images/index_banner.png';
 import locationIcon from '../images/location.png';
 import closeIcon from '../images/guanbi.png';
@@ -86,11 +85,7 @@ class IndexComponent extends React.Component{
 		this.props.dispatch(actions.footerAction('personal'));
 	}
 	goToMyOrder(){
-		const { navigator } = this.props;
-		let scenes = {
-			component:MyOrder
-		}
-		navigator.push(scenes);
+		this.props.dispatch(actions.footerAction('order'));
 	}
 	render(){
 		let data = this.props.data;

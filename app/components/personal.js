@@ -4,17 +4,17 @@ import {
 } from 'react-native';
 import Title from './title';
 
-class MyOrder extends React.Component {
+class PersonalCenter extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	render(){
 		return (
 			<View>
-				<Title titleName='我的订单' navigator={this.props.navigator} isHideBack='true'/>
+				<Title titleName='个人中心' navigator={this.props.navigator} isHideBack='true'/>
 			</View>
 		)
 	}
 }
 
-export default MyOrder;
+export default PersonalCenter;
