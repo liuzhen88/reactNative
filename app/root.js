@@ -7,11 +7,15 @@ import {
 	Image 
 } from 'react-native';
 import { connect } from 'react-redux';
+import StyleSheet from 'StyleSheet';
 import actions from './actions/root_action';
 
 import TabNavigator from 'react-native-tab-navigator';
 
 import footIndex from './images/footer_index.png';
+import footerPersonal from './images/footer_my.png';
+import footerType from './images/footer_type.png';
+import footerBusiness from './images/footer_business.png';
 import IndexComponent from './components/index';
 import PersonCenter from './components/personal';
 import MyOrder from './components/my_order';
@@ -30,7 +34,7 @@ class Root extends React.Component {
 				<TabNavigator.Item
 					title='首页'
 					renderIcon = {
-						() => <Image source={footIndex}/>
+						() => <Image source={footIndex} style={style.imageStyle}/>
 					}
 					selected={this.props.selectedTab === 'index'}
 					onPress={this.handlePress.bind(this,'index')} 
@@ -39,6 +43,9 @@ class Root extends React.Component {
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='订单'
+					renderIcon = {
+						() => <Image source={footerType} style={style.imageStyle} />
+					}
 					selected={this.props.selectedTab === 'order'}
 					onPress={this.handlePress.bind(this,'order')}
 				>	
@@ -46,6 +53,9 @@ class Root extends React.Component {
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='客服'
+					renderIcon = {
+						() => <Image source={footerBusiness} style={style.imageStyle} />
+					}
 					selected={this.props.selectedTab === 'customService'}
 					onPress={this.handlePress.bind(this,'customService')}
 				>	
@@ -55,6 +65,9 @@ class Root extends React.Component {
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='个人'
+					renderIcon = {
+						() => <Image source={footerPersonal} style={style.imageStyle} />
+					}
 					selected={this.props.selectedTab === 'personal'}
 					onPress={this.handlePress.bind(this,'personal')}
 				>	
@@ -65,6 +78,14 @@ class Root extends React.Component {
 		)
 	}
 };
+
+
+let style = StyleSheet.create({
+	imageStyle:{
+		width:20,
+		height:20
+	}
+});
 
 const mapStateToProps = (state) => {
 	return {
