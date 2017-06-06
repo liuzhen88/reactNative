@@ -164,6 +164,24 @@ class IndexComponent extends React.Component{
 						</View>
 					</TouchableNativeFeedback>
 				</View> 
+				<View style={styles.personal}>
+					<View style={styles.flexWidthBorder}>
+						<View>
+							<Text style={styles.personTitle}>我的订单</Text>
+						</View>
+						<View>
+							<Text style={styles.personExplain}>行程，合同，出游</Text>
+						</View>
+					</View>
+					<View style={styles.flexWidth}>
+						<View>
+							<Text style={styles.personTitle}>个人中心</Text>
+						</View>
+						<View>
+							<Text style={styles.personExplain}>会员，福利</Text>
+						</View>
+					</View>
+				</View>
 			</View>
 		)
 	}
@@ -185,7 +203,8 @@ let styles = StyleSheet.create({
 		position:'relative',
 		marginTop:-44,
 		backgroundColor:'rgba(255,255,255,0.96)',
-		borderRadius:8
+		borderTopLeftRadius:8,
+		borderTopRightRadius:8
 	},
 	startPlace:{
 		paddingLeft:20,
@@ -274,6 +293,35 @@ let styles = StyleSheet.create({
 		color:'#fff',
 		paddingTop:10,
 		paddingBottom:10
+	},
+	personal:{
+		flexDirection:'row',
+		backgroundColor:'#fff',
+		marginLeft:20,
+		marginRight:20,
+		paddingTop:10,
+		paddingBottom:10,
+		borderBottomLeftRadius:8,
+		borderBottomRightRadius:8,
+		marginTop:5
+	},
+	personTitle:{
+		fontSize:16,
+		color:'#333'
+	},
+	personExplain:{
+		fontSize:13,
+		color:'#999'
+	},
+	flexWidth:{
+		width:'50%',
+		paddingLeft:20
+	},
+	flexWidthBorder:{
+		width:'50%',
+		paddingLeft:20,
+		borderRightWidth:1,
+		borderRightColor:'#e2e2e2'
 	}
 });
 
