@@ -6,6 +6,8 @@ import {
 	Button, 
 	Image 
 } from 'react-native';
+import { connect } from 'react-redux';
+import actions from './actions/root_action';
 
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -15,14 +17,9 @@ import IndexComponent from './components/index';
 class Root extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			selectedTab:'index'
-		}
 	}
 	handlePress(page){
-		this.setState({
-			selectedTab:page
-		})
+		this.props.dispatch(actions.footerAction(page));
 	}
 	render(){
 		return (
@@ -33,14 +30,14 @@ class Root extends React.Component {
 					renderIcon = {
 						() => <Image source={footIndex}/>
 					}
-					selected={this.state.selectedTab === 'index'}
+					selected={this.props.selectedTab === 'index'}
 					onPress={this.handlePress.bind(this,'index')} 
 				>	
 					<IndexComponent navigator={this.props.navigator} testProps='1212121'/>
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='订单'
-					selected={this.state.selectedTab === 'order'}
+					selected={this.props.selectedTab === 'order'}
 					onPress={this.handlePress.bind(this,'order')}
 				>	
 					<View>
@@ -49,7 +46,7 @@ class Root extends React.Component {
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='客服'
-					selected={this.state.selectedTab === 'customService'}
+					selected={this.props.selectedTab === 'customService'}
 					onPress={this.handlePress.bind(this,'customService')}
 				>	
 					<View>
@@ -58,7 +55,7 @@ class Root extends React.Component {
 				</TabNavigator.Item>
 				<TabNavigator.Item
 					title='个人'
-					selected={this.state.selectedTab === 'personal'}
+					selected={this.props.selectedTab === 'personal'}
 					onPress={this.handlePress.bind(this,'personal')}
 				>	
 					<View>
@@ -71,6 +68,13 @@ class Root extends React.Component {
 	}
 };
 
+const mapStateToProps = (state) => {
+	return {
+		selectedTab:state.selectedTab
+	}
+}
+
+Root = connect(mapStateToProps)(Root);
 
 export default Root;
 

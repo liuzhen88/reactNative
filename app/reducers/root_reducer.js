@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import indexReducer from './index_reducer';
+import footerReducer from './footer_reducer';
 
 const testReducer = (state='', action) => {
 	switch (action.type){
@@ -12,7 +13,8 @@ const testReducer = (state='', action) => {
 
 let rootReducer = combineReducers({
 	test:testReducer,
-	customPackage:indexReducer
+	customPackage:indexReducer,
+	selectedTab:footerReducer
 });
 
 export default rootReducer;

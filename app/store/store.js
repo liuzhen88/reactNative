@@ -35,7 +35,8 @@ let initStore = {
 			childrenNum:0
 		},
 		isChange:false,
-	}
+	},
+	selectedTab:'index'
 }
 
 let store = createStore(

@@ -13,9 +13,11 @@ import StyleSheet from 'StyleSheet';
 import resolveAssetSource from 'resolveAssetSource';
 import { connect } from 'react-redux';
 
+import actions from '../actions/root_action';
 import StartPlace from './start_place';
 import EndPlace from './end_place';
 import SubmitOrder from './submit_order';
+import MyOrder from './my_order';
 import IndexBanner from '../images/index_banner.png';
 import locationIcon from '../images/location.png';
 import closeIcon from '../images/guanbi.png';
@@ -79,6 +81,16 @@ class IndexComponent extends React.Component{
 			}
 		});
 		return endPlaceName;
+	}
+	goToPersonal(){
+		this.props.dispatch(actions.footerAction('personal'));
+	}
+	goToMyOrder(){
+		const { navigator } = this.props;
+		let scenes = {
+			component:MyOrder
+		}
+		navigator.push(scenes);
 	}
 	render(){
 		let data = this.props.data;
@@ -165,22 +177,26 @@ class IndexComponent extends React.Component{
 					</TouchableNativeFeedback>
 				</View> 
 				<View style={styles.personal}>
-					<View style={styles.flexWidthBorder}>
-						<View>
-							<Text style={styles.personTitle}>我的订单</Text>
+					<TouchableNativeFeedback onPress={this.goToMyOrder.bind(this)}>
+						<View style={styles.flexWidthBorder}>
+							<View>
+								<Text style={styles.personTitle}>我的订单</Text>
+							</View>
+							<View>
+								<Text style={styles.personExplain}>行程，合同，出游</Text>
+							</View>
 						</View>
-						<View>
-							<Text style={styles.personExplain}>行程，合同，出游</Text>
+					</TouchableNativeFeedback>
+					<TouchableNativeFeedback onPress={this.goToPersonal.bind(this)}>
+						<View style={styles.flexWidth}>
+							<View>
+								<Text style={styles.personTitle}>个人中心</Text>
+							</View>
+							<View>
+								<Text style={styles.personExplain}>会员，福利</Text>
+							</View>
 						</View>
-					</View>
-					<View style={styles.flexWidth}>
-						<View>
-							<Text style={styles.personTitle}>个人中心</Text>
-						</View>
-						<View>
-							<Text style={styles.personExplain}>会员，福利</Text>
-						</View>
-					</View>
+					</TouchableNativeFeedback>
 				</View>
 			</View>
 		)
