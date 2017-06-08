@@ -3,6 +3,9 @@ const indexReducer = (state='',action) => {
 		case "locationStartPlace":
 			return action.data;
 			break;
+		case "changeStartPlace":
+			return action.newData;
+			break;
 		default:
 			return state;
 			break;

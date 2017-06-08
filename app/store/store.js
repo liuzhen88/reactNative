@@ -6,8 +6,8 @@ let initStore = {
 	test:'测试',
 	customPackage:{
 		startPlace:{
-			Id:[],
-			Type:'',
+			Id:1,
+			Type:1,
 			Name:'苏州'
 		},
 		endPlace:[],
