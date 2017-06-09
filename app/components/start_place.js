@@ -6,7 +6,6 @@ import {
 	TouchableNativeFeedback
 } from 'react-native';
 import { connect } from 'react-redux';
-import Title from './title';
 import actions from '../actions/root_action';
 
 class StartPlace extends React.Component {

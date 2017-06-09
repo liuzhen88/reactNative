@@ -7,6 +7,15 @@ const startPlaceAction = (data, startPlace) => {
 	}
 }
 
+const endPlaceAction = (data, endPlace) => {
+	let newData = getNewData(data);
+	newData.endPlace = endPlace;
+	return {
+		type:'changeEndPlace',
+		newData
+	}
+}
+
 
 function getNewData (oldData){
 	let newData = {}
@@ -17,5 +26,6 @@ function getNewData (oldData){
 }
 
 export default {
-	startPlaceAction
+	startPlaceAction,
+	endPlaceAction
 }

@@ -6,6 +6,9 @@ const indexReducer = (state='',action) => {
 		case "changeStartPlace":
 			return action.newData;
 			break;
+		case "changeEndPlace":
+			return action.newData;
+			break;
 		default:
 			return state;
 			break;

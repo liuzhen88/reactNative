@@ -81,6 +81,10 @@ class IndexComponent extends React.Component{
 		});
 		return endPlaceName;
 	}
+	clearSelectEndPlace(){
+		let data = this.props.data;
+		this.props.dispatch(actions.indexAction.endPlaceAction(data,[]));
+	}
 	goToPersonal(){
 		this.props.dispatch(actions.footerAction('personal'));
 	}
@@ -112,19 +116,23 @@ class IndexComponent extends React.Component{
 						</TouchableNativeFeedback>
 					</View>
 					 
-					<TouchableNativeFeedback onPress={this.selectEndPlace.bind(this)}>
-						<View style={styles.startPlace}>
-							<Text style={styles.startPlaceName}>目的地</Text>
-							<TextInput value={this.getEndPlaceName(data.endPlace)} 
-								style={styles.startPlaceInput} 
-								editable={false} 
-								underlineColorAndroid = 'transparent'
-							/>
+					<View style={styles.startPlace}>
+						<Text style={styles.startPlaceName}>目的地</Text>
+						<TouchableNativeFeedback onPress={this.selectEndPlace.bind(this)}>
+							<View>
+								<TextInput value={this.getEndPlaceName(data.endPlace)} 
+									style={styles.startPlaceInput} 
+									editable={false} 
+									underlineColorAndroid = 'transparent'
+								/>
+							</View>
+						</TouchableNativeFeedback>
+						<TouchableNativeFeedback onPress={this.clearSelectEndPlace.bind(this)}>
 							<View style={styles.location}>
 								<Image source={closeIcon} style={styles.locationImage}/>
 							</View>
-						</View>
-					</TouchableNativeFeedback>
+						</TouchableNativeFeedback>
+					</View>
 					<TouchableNativeFeedback>
 						<View>
 							<View style={styles.timeSelectContainer}>
