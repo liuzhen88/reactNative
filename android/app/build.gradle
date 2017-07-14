@@ -95,6 +95,10 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [
+            JPUSH_APPKEY:'517f6ac489048c7d07871d9e',
+            APP_CHANNEL:'728b4e2591f7f13890f6fd6f'
+        ]
     }
     splits {
         abi {
@@ -126,8 +130,11 @@ android {
 }
 
 dependencies {
+    compile project(':jpush-react-native')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
+    compile project(':jpush-react-native')  // ÃÌº” jpush “¿¿µ
+    compile project(':jcore-react-native')  // ÃÌº” jcore “¿¿µ
     compile "com.facebook.react:react-native:+"  // From node_modules
 }
 

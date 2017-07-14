@@ -2,7 +2,7 @@ let config = {
 	serverUrl:'http://120.25.152.42:8888/users',
 	getAjaxData:function(requestUrl, method, param, callback){
 		let request = new XMLHttpRequest();
-		request.onreadystatechange = (e) => {
+		request.onreadystatechange = () => {
 			if(request.readyState != 4 ){
 				return;
 			}
@@ -13,7 +13,7 @@ let config = {
 				}
 				callback(data);
 			}else{
-				console.log(e);
+				console.log('³ö´íÀ²');
 			}
 		}
 
